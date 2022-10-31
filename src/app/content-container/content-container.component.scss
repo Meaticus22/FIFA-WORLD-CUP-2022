@@ -1,0 +1,9 @@
+:host {
+  height: 100%;
+  .content-container {
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: 1fr;
+  }
+}

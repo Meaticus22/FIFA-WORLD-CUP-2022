@@ -1,12 +1,22 @@
-.graph-container {
-  width: 100%;
+:host {
   height: 100%;
-  background: #1c2029;
+  width: 100%;
+  .graph-container {
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    background: #1c2029;
+    // position: relative;
 
-  background: -moz-radial-gradient(#2b3240 15%, transparent 16%),
-    -moz-radial-gradient(#2b3240 15%, transparent 16%), #1c2029;
-  background: -webkit-radial-gradient(#2b3240 15%, transparent 16%),
-    -webkit-radial-gradient(#2b3240 15%, transparent 16%), #1c2029;
-  background-position: 0 0, 10px 10px;
-  background-size: 5px 5px;
+    background: -moz-radial-gradient(#2b3240 15%, transparent 16%),
+      -moz-radial-gradient(#2b3240 15%, transparent 16%), #1c2029;
+    background: -webkit-radial-gradient(#2b3240 15%, transparent 16%),
+      -webkit-radial-gradient(#2b3240 15%, transparent 16%), #1c2029;
+    background-position: 0 0, 10px 10px;
+    background-size: 5px 5px;
+  }
+  svg.ngx-charts {
+    width: 100%;
+    height: 100%;
+  }
 }
