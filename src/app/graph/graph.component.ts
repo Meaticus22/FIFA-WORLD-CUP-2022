@@ -95,59 +95,59 @@ export class GraphComponent implements OnInit {
   nodes = [
     {
       id: 'first',
-      label: 'A',
+      label: 'A1 vs B2',
     },
     {
       id: 'second',
-      label: 'B',
+      label: 'A2 vs B1',
     },
     {
       id: 'third',
-      label: 'C',
+      label: 'C1 vs D2',
     },
     {
       id: 'fourth',
-      label: 'D',
+      label: 'C2 vs D1',
     },
     {
       id: 'AvsB',
-      label: 'AB',
+      label: ' A vs B',
     },
     {
       id: 'CvsD',
-      label: 'AB',
+      label: 'C vs D',
     },
     {
       id: 'semi1',
-      label: 'AB',
+      label: 'Semi 1',
     },
     {
       id: 'fifth',
-      label: 'E',
+      label: 'E1 vs F2',
     },
     {
       id: 'sixth',
-      label: 'F',
+      label: 'E2 vs F1',
     },
     {
       id: 'seventh',
-      label: 'G',
+      label: 'G1 vs H2',
     },
     {
       id: 'eighth',
-      label: 'H',
+      label: 'G2 vs H1',
     },
     {
       id: 'EvsF',
-      label: 'EF',
+      label: 'E vs F',
     },
     {
       id: 'GvsH',
-      label: 'GH',
+      label: 'G vs H',
     },
     {
       id: 'semi2',
-      label: 'EF-GH',
+      label: 'Semi 2',
     },
     {
       id: 'final',
