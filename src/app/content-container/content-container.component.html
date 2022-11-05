@@ -1,4 +1,8 @@
-<div class="content-container">
-  <app-groups-list></app-groups-list>
-  <app-graph></app-graph>
-</div>
+<ng-container *ngIf="vm$ | async as vm">
+  <div class="content-container">
+    <div></div>
+    <app-groups-list [groups]="vm.groups"></app-groups-list>
+    <app-graph></app-graph>
+    <div></div>
+  </div>
+</ng-container>

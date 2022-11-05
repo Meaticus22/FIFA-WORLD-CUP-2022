@@ -1,0 +1,11 @@
+:host {
+  .header {
+    display: flex;
+    justify-content: center;
+    p {
+      color: #1c2029;
+      font-weight: 100;
+      // border-bottom: 1px solid #1b246c;
+    }
+  }
+}

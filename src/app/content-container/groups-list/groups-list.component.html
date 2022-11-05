@@ -1,19 +1,47 @@
-<div class="select-container">
-  <mat-form-field appearance="fill">
-    <mat-label>1st Place</mat-label>
-    <mat-select [(ngModel)]="firstPlace" name="team">
-      <mat-option *ngFor="let team of teams" [value]="team">
-        {{ team }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
+<section class="form-container">
+  <h3>Who will be the first and second place of each group?</h3>
+  <ng-container *ngFor="let group of groups; index as i">
+    <div class="select-container">
+      <div class="group-description">
+        <p>Group {{ group.id }}</p>
+        <div class="chips-container">
+          <mat-chip-list *ngFor="let team of group.teams" aria-label="Teams">
+            <mat-chip>
+              <span>{{ team.name }}</span>
+              <span>{{ team.emojiFlag }}</span>
+            </mat-chip>
+          </mat-chip-list>
+        </div>
+      </div>
 
-  <mat-form-field appearance="fill">
-    <mat-label>2nd Place</mat-label>
-    <mat-select [(ngModel)]="secondPlace" name="team">
-      <mat-option *ngFor="let team of teams" [value]="team">
-        {{ team }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-</div>
+      <div class="select-fields-container">
+        <mat-form-field appearance="fill">
+          <mat-label>1st Place</mat-label>
+          <mat-select
+            [(ngModel)]="group.firstPlace"
+            (ngModelChange)="onFirstPlaceChange($event, group)"
+            name="team"
+          >
+            <mat-option *ngFor="let team of group.teams" [value]="team.id">
+              {{ team.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>2nd Place</mat-label>
+          <mat-select
+            [(ngModel)]="group.secondPlace"
+            (ngModelChange)="onSecondPlaceChange($event, group)"
+            name="team"
+          >
+            <mat-option *ngFor="let team of group.teams" [value]="team.id">
+              {{ team.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <mat-divider></mat-divider>
+  </ng-container>
+</section>
