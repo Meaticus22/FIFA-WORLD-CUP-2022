@@ -4,22 +4,19 @@ import { NgxGraphModule } from '@swimlane/ngx-graph';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { GraphComponent } from './graph/graph.component';
+import {} from './content-container/graph/graph.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
-import { GroupsListComponent } from './groups-list/groups-list.component';
-import { ContentContainerComponent } from './content-container/content-container.component';
-import { GroupsListModule } from './groups-list/groups-list.module';
+import { ContentContainerModule } from './content-container/content-container.module';
 
 @NgModule({
-  declarations: [AppComponent, GraphComponent, ContentContainerComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgxGraphModule,
     BrowserAnimationsModule,
     SharedModule,
-    GroupsListModule,
+    ContentContainerModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

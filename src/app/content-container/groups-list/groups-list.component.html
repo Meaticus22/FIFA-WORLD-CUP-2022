@@ -1,0 +1,19 @@
+<div class="select-container">
+  <mat-form-field appearance="fill">
+    <mat-label>1st Place</mat-label>
+    <mat-select [(ngModel)]="firstPlace" name="team">
+      <mat-option *ngFor="let team of teams" [value]="team">
+        {{ team }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>2nd Place</mat-label>
+    <mat-select [(ngModel)]="secondPlace" name="team">
+      <mat-option *ngFor="let team of teams" [value]="team">
+        {{ team }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
