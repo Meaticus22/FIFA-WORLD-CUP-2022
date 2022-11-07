@@ -1,11 +1,8 @@
 :host {
-  // height: 100%;
-  // width: 100%;
+  flex: 2;
   .graph-container {
-    overflow: hidden;
-    width: calc(100% - 32px);
-    margin: 32px 0 0 32px;
-    height: calc(100% - 64px);
+    height: 100%;
+
     background: #1c2029;
     position: relative;
 
