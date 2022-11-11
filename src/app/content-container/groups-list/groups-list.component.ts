@@ -22,13 +22,20 @@ export class GroupsListComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onFirstPlaceChange(teamName: string, group: Group) {
-    group.firstPlace = teamName;
+  onFirstPlaceChange(teamId: string, group: Group) {
+    group.firstPlace = teamId;
     this.store.updateGroup(group);
+
+    const team = group.teams.find((team) => team.id === teamId) as Team;
+    this.store.updateNode({ groupPosition: `${group.id}1`, team });
+    //
   }
 
-  onSecondPlaceChange(teamName: string, group: Group) {
-    group.secondPlace = teamName;
+  onSecondPlaceChange(teamId: string, group: Group) {
+    group.secondPlace = teamId;
     this.store.updateGroup(group);
+
+    const team = group.teams.find((team) => team.id === teamId) as Team;
+    this.store.updateNode({ groupPosition: `${group.id}2`, team });
   }
 }

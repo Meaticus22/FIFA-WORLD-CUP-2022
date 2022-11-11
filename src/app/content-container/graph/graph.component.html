@@ -7,17 +7,15 @@
   >
     <ng-template #nodeTemplate let-node>
       <svg:g class="node">
-        <svg:rect
-          [attr.width]="node.dimension.width"
-          [attr.height]="node.dimension.height"
-          [attr.fill]="node.data.color"
-        />
-        <svg:text
-          alignment-baseline="central"
-          [attr.x]="10"
-          [attr.y]="node.dimension.height / 2"
-        >
-          {{ node.label }}
+        <svg:rect width="120" height="80" fill="#fff" stroke="#112A46" />
+        <svg:text alignment-baseline="central" [attr.x]="20" [attr.y]="20">
+          {{ node.data.teamA || node.data.teamAPlaceholder }}
+        </svg:text>
+        <svg:text alignment-baseline="central" [attr.x]="20" [attr.y]="40">
+          vs
+        </svg:text>
+        <svg:text alignment-baseline="central" [attr.x]="20" [attr.y]="60">
+          {{ node.data.teamB || node.data.teamBPlaceholder }}
         </svg:text>
       </svg:g>
     </ng-template>

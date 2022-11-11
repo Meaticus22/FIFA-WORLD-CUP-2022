@@ -2,6 +2,9 @@
 
 import { Injectable } from '@angular/core';
 import { ComponentStore } from '@ngrx/component-store';
+import { Edge, Node } from '@swimlane/ngx-graph';
+import { LINKS } from './constants/links';
+import { NODES } from './constants/nodes';
 import {
   GROUP_A,
   GROUP_B,
@@ -11,7 +14,7 @@ import {
   GROUP_F,
   GROUP_G,
   GROUP_H,
-} from './teams';
+} from './constants/teams';
 
 export interface Team {
   id: string;
@@ -28,6 +31,8 @@ export interface Group {
 
 export interface BracketsState {
   groups: Group[];
+  nodes: Node[];
+  links: Edge[];
 }
 
 export const initialState: BracketsState = {
@@ -41,6 +46,8 @@ export const initialState: BracketsState = {
     { firstPlace: '', secondPlace: '', teams: GROUP_G, id: 'G' },
     { firstPlace: '', secondPlace: '', teams: GROUP_H, id: 'H' },
   ],
+  nodes: NODES,
+  links: LINKS,
 };
 
 @Injectable()
@@ -50,11 +57,17 @@ export class ContentContainerStore extends ComponentStore<BracketsState> {
   }
 
   readonly groups$ = this.select((state) => state.groups);
+  readonly nodes$ = this.select((state) => state.nodes);
+  readonly links$ = this.select((state) => state.links);
 
   readonly vm$ = this.select(
     this.groups$,
-    (groups): BracketsState => ({
+    this.nodes$,
+    this.links$,
+    (groups, nodes, links): BracketsState => ({
       groups,
+      nodes,
+      links,
     })
   );
 
@@ -71,4 +84,24 @@ export class ContentContainerStore extends ComponentStore<BracketsState> {
       groups: groups,
     };
   });
+
+  readonly updateNode = this.updater(
+    (state, data: { groupPosition: string; team: Team }) => {
+      const nodes = state.nodes.map((n) => {
+        if (n.id.includes(data.groupPosition)) {
+          if (data.groupPosition.includes('1')) {
+            n.data['teamA'] = data.team.name + ' ' + data.team.emojiFlag;
+          } else {
+            n.data['teamB'] = data.team.name + ' ' + data.team.emojiFlag;
+          }
+          return n;
+        }
+        return n;
+      });
+      return {
+        ...state,
+        nodes: nodes,
+      };
+    }
+  );
 }

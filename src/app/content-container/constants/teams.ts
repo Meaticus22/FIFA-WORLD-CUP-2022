@@ -1,4 +1,4 @@
-import { Team } from './content-container.store';
+import { Group, Team } from '../content-container.store';
 
 export const GROUP_A: Team[] = [
   {

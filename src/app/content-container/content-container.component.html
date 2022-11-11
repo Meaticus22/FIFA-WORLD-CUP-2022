@@ -1,6 +1,6 @@
 <ng-container *ngIf="vm$ | async as vm">
   <div class="content-container">
     <app-groups-list [groups]="vm.groups"></app-groups-list>
-    <app-graph></app-graph>
+    <app-graph [nodes]="vm.nodes" [links]="vm.links"></app-graph>
   </div>
 </ng-container>
