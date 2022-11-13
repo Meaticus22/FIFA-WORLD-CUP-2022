@@ -57,12 +57,12 @@ export const LINKS: Edge[] = [
     target: 'E2vsF1',
   },
   {
-    id: '12ds',
+    id: 'awds',
     source: 'Cuartos_4',
     target: 'G2vsH1',
   },
   {
-    id: '6gt7',
+    id: 'cgt7',
     source: 'Semi_2',
     target: 'Cuartos_3',
   },

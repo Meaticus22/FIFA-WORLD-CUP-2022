@@ -18,11 +18,16 @@
         <mat-form-field appearance="fill">
           <mat-label>1st Place</mat-label>
           <mat-select
+            #firstPlace
             [(ngModel)]="group.firstPlace"
             (ngModelChange)="onFirstPlaceChange($event, group)"
             name="team"
           >
-            <mat-option *ngFor="let team of group.teams" [value]="team.id">
+            <mat-option
+              *ngFor="let team of group.teams"
+              [value]="team.id"
+              [disabled]="team.id === secondPlace.value"
+            >
               {{ team.name }}
             </mat-option>
           </mat-select>
@@ -30,11 +35,16 @@
         <mat-form-field appearance="fill">
           <mat-label>2nd Place</mat-label>
           <mat-select
+            #secondPlace
             [(ngModel)]="group.secondPlace"
             (ngModelChange)="onSecondPlaceChange($event, group)"
             name="team"
           >
-            <mat-option *ngFor="let team of group.teams" [value]="team.id">
+            <mat-option
+              *ngFor="let team of group.teams"
+              [value]="team.id"
+              [disabled]="team.id === firstPlace.value"
+            >
               {{ team.name }}
             </mat-option>
           </mat-select>

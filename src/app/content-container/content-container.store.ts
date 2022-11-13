@@ -78,14 +78,14 @@ export class ContentContainerStore extends ComponentStore<BracketsState> {
       }
       return g;
     });
-    console.log('here');
+
     return {
       ...state,
       groups: groups,
     };
   });
 
-  readonly updateNode = this.updater(
+  readonly updateGroupNode = this.updater(
     (state, data: { groupPosition: string; team: Team }) => {
       const nodes = state.nodes.map((n) => {
         if (n.id.includes(data.groupPosition)) {

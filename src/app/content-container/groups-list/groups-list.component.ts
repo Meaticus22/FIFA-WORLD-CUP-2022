@@ -27,7 +27,7 @@ export class GroupsListComponent implements OnInit {
     this.store.updateGroup(group);
 
     const team = group.teams.find((team) => team.id === teamId) as Team;
-    this.store.updateNode({ groupPosition: `${group.id}1`, team });
+    this.store.updateGroupNode({ groupPosition: `${group.id}1`, team });
     //
   }
 
@@ -36,6 +36,6 @@ export class GroupsListComponent implements OnInit {
     this.store.updateGroup(group);
 
     const team = group.teams.find((team) => team.id === teamId) as Team;
-    this.store.updateNode({ groupPosition: `${group.id}2`, team });
+    this.store.updateGroupNode({ groupPosition: `${group.id}2`, team });
   }
 }

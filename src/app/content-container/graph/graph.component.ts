@@ -5,6 +5,7 @@ import {
   OnInit,
 } from '@angular/core';
 import { Edge, Node } from '@swimlane/ngx-graph';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-graph',
@@ -16,16 +17,28 @@ export class GraphComponent implements OnInit {
   @Input() nodes: Node[] = [];
   @Input() links: Edge[] = [];
 
+  center$: Subject<boolean> = new Subject();
+  zoomToFit$: Subject<boolean> = new Subject();
+
   constructor() {}
 
   ngOnInit(): void {
-    // this.nodes[0] = node;
-
-    console.log(this.links);
+    console.log('mounted');
   }
 
-  ngOnChanges() {
-    console.log(this.links);
-    console.log(this.nodes);
+  ngAfterViewInit() {
+    //  this.fitGraph();
+    // this.centerGraph();
+    setTimeout(() => {
+      this.fitGraph();
+    }, 1000);
+  }
+
+  centerGraph() {
+    this.center$.next(true);
+  }
+
+  fitGraph() {
+    this.zoomToFit$.next(true);
   }
 }
