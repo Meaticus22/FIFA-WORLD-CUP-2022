@@ -18,12 +18,14 @@
             <mat-radio-group
               aria-label="Select an option"
               class="node-radio-group"
+              [(ngModel)]="node.data.winner"
+              (ngModelChange)="onWinnerChange(node)"
             >
-              <mat-radio-button value="1">{{
+              <mat-radio-button [value]="node.data.teamA">{{
                 node.data.teamA || node.data.teamAPlaceholder
               }}</mat-radio-button>
 
-              <mat-radio-button value="2">{{
+              <mat-radio-button [value]="node.data.teamB">{{
                 node.data.teamB || node.data.teamBPlaceholder
               }}</mat-radio-button>
             </mat-radio-group>

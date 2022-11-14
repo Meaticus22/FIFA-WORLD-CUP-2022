@@ -7,9 +7,11 @@ export const NODES: Node[] = [
 
     data: {
       teamA: '',
-      teamAPlaceholder: 'A1',
+      teamAPlaceholder: '1A',
       teamB: '',
-      teamBPlaceholder: 'B2',
+      teamBPlaceholder: '2B',
+      winner: '',
+      target: { id: 'Cuartos_1', team: 'teamA' },
     },
   },
   {
@@ -18,13 +20,23 @@ export const NODES: Node[] = [
     data: {
       teamA: '',
       teamB: '',
-      teamAPlaceholder: 'C1',
-      teamBPlaceholder: 'D2',
+      teamAPlaceholder: '1C',
+      teamBPlaceholder: '2D',
+      winner: '',
+      target: { id: 'Cuartos_1', team: 'teamB' },
     },
   },
   {
     id: 'Cuartos_1',
     label: 'Cuartos 1',
+    data: {
+      teamA: '',
+      teamB: '',
+      teamAPlaceholder: 'QuarterFinal 1',
+      teamBPlaceholder: 'QuarterFinal 2',
+      winner: '',
+      target: { id: 'Semi_1', team: 'teamA' },
+    },
   },
   {
     id: 'E1vsF2',
@@ -33,13 +45,22 @@ export const NODES: Node[] = [
     data: {
       teamA: '',
       teamB: '',
-      teamAPlaceholder: 'E1',
-      teamBPlaceholder: 'F2',
+      teamAPlaceholder: '1E',
+      teamBPlaceholder: '2F',
+      winner: '',
+      target: { id: 'Cuartos_2', team: 'teamA' },
     },
   },
   {
     id: 'Final',
     label: 'Final',
+    data: {
+      teamA: '',
+      teamB: '',
+      teamAPlaceholder: 'Finalist 1',
+      teamBPlaceholder: 'Finalist 2',
+      winner: '',
+    },
   },
   {
     id: 'G1vsH2',
@@ -48,17 +69,36 @@ export const NODES: Node[] = [
     data: {
       teamA: '',
       teamB: '',
-      teamAPlaceholder: 'G1',
+      teamAPlaceholder: '1G',
       teamBPlaceholder: 'H2',
+      winner: '',
+
+      target: { id: 'Cuartos_2', team: 'teamB' },
     },
   },
   {
     id: 'Cuartos_2',
     label: 'Cuartos 2',
+    data: {
+      teamA: '',
+      teamB: '',
+      teamAPlaceholder: 'QuarterFinal 3',
+      teamBPlaceholder: 'QuarterFinal 4',
+      winner: '',
+      target: { id: 'Semi_1', team: 'teamB' },
+    },
   },
   {
     id: 'Semi_1',
     label: 'Semi 1',
+    data: {
+      teamA: '',
+      teamB: '',
+      teamAPlaceholder: 'Semi 1',
+      teamBPlaceholder: 'Semi 2',
+      winner: '',
+      target: { id: 'Final', team: 'teamA' },
+    },
   },
   {
     id: 'A2vsB1',
@@ -67,8 +107,10 @@ export const NODES: Node[] = [
     data: {
       teamA: '',
       teamB: '',
-      teamAPlaceholder: 'B1',
-      teamBPlaceholder: 'A2',
+      teamAPlaceholder: '1B',
+      teamBPlaceholder: '2A',
+      winner: '',
+      target: { id: 'Cuartos_3', team: 'teamA' },
     },
   },
 
@@ -79,13 +121,23 @@ export const NODES: Node[] = [
     data: {
       teamA: '',
       teamB: '',
-      teamAPlaceholder: 'D1',
-      teamBPlaceholder: 'C2',
+      teamAPlaceholder: '1D',
+      teamBPlaceholder: '2C',
+      winner: '',
+      target: { id: 'Cuartos_3', team: 'teamB' },
     },
   },
   {
     id: 'Cuartos_3',
     label: 'Cuartos 3',
+    data: {
+      teamA: '',
+      teamB: '',
+      teamAPlaceholder: 'QuarterFinal 5',
+      teamBPlaceholder: 'QuarterFinal 6',
+      winner: '',
+      target: { id: 'Semi_2', team: 'teamA' },
+    },
   },
 
   {
@@ -95,8 +147,10 @@ export const NODES: Node[] = [
     data: {
       teamA: '',
       teamB: '',
-      teamAPlaceholder: 'F1',
-      teamBPlaceholder: 'E2',
+      teamAPlaceholder: '1F',
+      teamBPlaceholder: '2E',
+      winner: '',
+      target: { id: 'Cuartos_4', team: 'teamA' },
     },
   },
 
@@ -106,16 +160,34 @@ export const NODES: Node[] = [
     data: {
       teamA: '',
       teamB: '',
-      teamAPlaceholder: 'H1',
-      teamBPlaceholder: 'G2',
+      teamAPlaceholder: '1H',
+      teamBPlaceholder: '2G',
+      winner: '',
+      target: { id: 'Cuartos_4', team: 'teamB' },
     },
   },
   {
     id: 'Cuartos_4',
     label: 'Cuartos 4',
+    data: {
+      teamA: '',
+      teamB: '',
+      teamAPlaceholder: 'QuarterFinal 7',
+      teamBPlaceholder: 'QuarterFinal 8',
+      winner: '',
+      target: { id: 'Semi_2', team: 'teamB' },
+    },
   },
   {
     id: 'Semi_2',
     label: 'Semi 2',
+    data: {
+      teamA: '',
+      teamB: '',
+      teamAPlaceholder: 'Semi 3',
+      teamBPlaceholder: 'Semi 4',
+      winner: '',
+      target: { id: 'Final', team: 'teamB' },
+    },
   },
 ];

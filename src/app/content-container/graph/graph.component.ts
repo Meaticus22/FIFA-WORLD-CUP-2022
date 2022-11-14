@@ -6,6 +6,7 @@ import {
 } from '@angular/core';
 import { Edge, Node } from '@swimlane/ngx-graph';
 import { Subject } from 'rxjs';
+import { ContentContainerStore } from '../content-container.store';
 
 @Component({
   selector: 'app-graph',
@@ -20,7 +21,7 @@ export class GraphComponent implements OnInit {
   center$: Subject<boolean> = new Subject();
   zoomToFit$: Subject<boolean> = new Subject();
 
-  constructor() {}
+  constructor(private store: ContentContainerStore) {}
 
   ngOnInit(): void {
     console.log('mounted');
@@ -40,5 +41,12 @@ export class GraphComponent implements OnInit {
 
   fitGraph() {
     this.zoomToFit$.next(true);
+  }
+
+  onWinnerChange(node: Node) {
+    const id = node.data.target.id;
+    const teamType = node.data.target.team;
+    const teamName = node.data.winner;
+    this.store.updatePlayoffNode({ id, teamType, teamName });
   }
 }

@@ -1,9 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import {
-  CdkDragDrop,
-  moveItemInArray,
-  transferArrayItem,
-} from '@angular/cdk/drag-drop';
 import { ContentContainerStore, Group, Team } from '../content-container.store';
 @Component({
   selector: 'app-groups-list',

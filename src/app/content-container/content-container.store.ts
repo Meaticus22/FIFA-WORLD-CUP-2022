@@ -104,4 +104,21 @@ export class ContentContainerStore extends ComponentStore<BracketsState> {
       };
     }
   );
+
+  readonly updatePlayoffNode = this.updater(
+    (state, data: { id: string; teamType: string; teamName: string }) => {
+      const { id, teamType, teamName } = data;
+      const nodes = state.nodes.map((n) => {
+        if (n.id.includes(id)) {
+          n.data[teamType] = teamName;
+          return n;
+        }
+        return n;
+      });
+      return {
+        ...state,
+        nodes: nodes,
+      };
+    }
+  );
 }
