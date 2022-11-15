@@ -60,6 +60,7 @@ export const NODES: Node[] = [
       teamAPlaceholder: 'Finalist 1',
       teamBPlaceholder: 'Finalist 2',
       winner: '',
+      target: '',
     },
   },
   {

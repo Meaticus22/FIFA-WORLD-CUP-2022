@@ -3,6 +3,7 @@
 import { Injectable } from '@angular/core';
 import { ComponentStore } from '@ngrx/component-store';
 import { Edge, Node } from '@swimlane/ngx-graph';
+import { Observable, tap, withLatestFrom } from 'rxjs';
 import { LINKS } from './constants/links';
 import { NODES } from './constants/nodes';
 import {
@@ -85,40 +86,78 @@ export class ContentContainerStore extends ComponentStore<BracketsState> {
     };
   });
 
-  readonly updateGroupNode = this.updater(
-    (state, data: { groupPosition: string; team: Team }) => {
-      const nodes = state.nodes.map((n) => {
-        if (n.id.includes(data.groupPosition)) {
-          if (data.groupPosition.includes('1')) {
-            n.data['teamA'] = data.team.name + ' ' + data.team.emojiFlag;
+  readonly updateNode = this.updater((state, node: Node) => {
+    const nodes: Node[] = state.nodes.map((n) => {
+      if (n.id === node.id) {
+        return node;
+      }
+      return n;
+    });
+
+    return {
+      ...state,
+      nodes: nodes,
+    };
+  });
+
+  readonly updateGroupNodeEffect = this.effect(
+    (data$: Observable<{ groupPosition: string; teamId: string }>) =>
+      data$.pipe(
+        withLatestFrom(this.nodes$, this.groups$),
+        tap(([data, nodes, groups]) => {
+          const { groupPosition, teamId } = data;
+          const team = groups
+            .find((g) => groupPosition.includes(g.id))
+            ?.teams.find((t) => t.id === teamId);
+
+          const node = nodes.find((n) => n.id.includes(groupPosition)) as Node;
+          if (groupPosition.includes('1')) {
+            node.data['teamA'] = team?.name + ' ' + team?.emojiFlag;
           } else {
-            n.data['teamB'] = data.team.name + ' ' + data.team.emojiFlag;
+            node.data['teamB'] = team?.name + ' ' + team?.emojiFlag;
           }
-          return n;
-        }
-        return n;
-      });
-      return {
-        ...state,
-        nodes: nodes,
-      };
-    }
+          node.data.winner = null;
+          this.updateNode(node);
+        })
+      )
   );
 
-  readonly updatePlayoffNode = this.updater(
-    (state, data: { id: string; teamType: string; teamName: string }) => {
-      const { id, teamType, teamName } = data;
-      const nodes = state.nodes.map((n) => {
-        if (n.id.includes(id)) {
-          n.data[teamType] = teamName;
-          return n;
-        }
-        return n;
-      });
-      return {
-        ...state,
-        nodes: nodes,
-      };
-    }
+  readonly updatePlayoffNodeEffect = this.effect((node$: Observable<Node>) =>
+    node$.pipe(
+      withLatestFrom(this.nodes$),
+      tap(([node, nodes]) => {
+        const targetNode = nodes.find(
+          (n) => n.id === node.data.target.id
+        ) as Node;
+        const target = node.data.target.team;
+        const winner = node.data.winner;
+        targetNode.data[target] = winner;
+        this.updateNode(targetNode);
+      })
+    )
   );
+
+  readonly updateUpstreamNodesOnGroupChange = this.effect(
+    (groupPosition$: Observable<string>) =>
+      groupPosition$.pipe(
+        withLatestFrom(this.nodes$),
+        tap(([groupPosition, nodes]) => {
+          const node = nodes.find((n) => n.id.includes(groupPosition)) as Node;
+          this.updateUpstreamNodes(node, nodes);
+        })
+      )
+  );
+
+  private updateUpstreamNodes(node: Node, nodes: Node[]) {
+    const target = node.data.target.team;
+    const upstreamNode = nodes.find(
+      (n) => n.id === node.data.target.id
+    ) as Node;
+    if (upstreamNode) {
+      upstreamNode.data[target] = '';
+      upstreamNode.data.winner = null;
+      this.updateNode(upstreamNode);
+      this.updateUpstreamNodes(upstreamNode, nodes);
+    }
+  }
 }

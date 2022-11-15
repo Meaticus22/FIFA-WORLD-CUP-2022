@@ -44,9 +44,6 @@ export class GraphComponent implements OnInit {
   }
 
   onWinnerChange(node: Node) {
-    const id = node.data.target.id;
-    const teamType = node.data.target.team;
-    const teamName = node.data.winner;
-    this.store.updatePlayoffNode({ id, teamType, teamName });
+    if (node.data.target.id) this.store.updatePlayoffNodeEffect(node);
   }
 }

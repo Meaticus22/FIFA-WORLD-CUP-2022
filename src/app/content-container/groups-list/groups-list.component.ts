@@ -20,17 +20,14 @@ export class GroupsListComponent implements OnInit {
   onFirstPlaceChange(teamId: string, group: Group) {
     group.firstPlace = teamId;
     this.store.updateGroup(group);
-
-    const team = group.teams.find((team) => team.id === teamId) as Team;
-    this.store.updateGroupNode({ groupPosition: `${group.id}1`, team });
-    //
+    this.store.updateGroupNodeEffect({ groupPosition: `${group.id}1`, teamId });
+    this.store.updateUpstreamNodesOnGroupChange(`${group.id}1`);
   }
 
   onSecondPlaceChange(teamId: string, group: Group) {
     group.secondPlace = teamId;
     this.store.updateGroup(group);
-
-    const team = group.teams.find((team) => team.id === teamId) as Team;
-    this.store.updateGroupNode({ groupPosition: `${group.id}2`, team });
+    this.store.updateGroupNodeEffect({ groupPosition: `${group.id}2`, teamId });
+    this.store.updateUpstreamNodesOnGroupChange(`${group.id}2`);
   }
 }
