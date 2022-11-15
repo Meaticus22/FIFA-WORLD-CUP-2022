@@ -23,9 +23,7 @@ export class GraphComponent implements OnInit {
 
   constructor(private store: ContentContainerStore) {}
 
-  ngOnInit(): void {
-    console.log('mounted');
-  }
+  ngOnInit(): void {}
 
   ngAfterViewInit() {
     //  this.fitGraph();
@@ -45,5 +43,6 @@ export class GraphComponent implements OnInit {
 
   onWinnerChange(node: Node) {
     if (node.data.target.id) this.store.updatePlayoffNodeEffect(node);
+    this.store.updateLinksOnGroupChange(node);
   }
 }

@@ -4,7 +4,6 @@ export const NODES: Node[] = [
   {
     id: 'A1vsB2',
     label: 'A1 vs B2',
-
     data: {
       teamA: '',
       teamAPlaceholder: '1A',
@@ -12,6 +11,7 @@ export const NODES: Node[] = [
       teamBPlaceholder: '2B',
       winner: '',
       target: { id: 'Cuartos_1', team: 'teamA' },
+      dataFlow: 'source',
     },
   },
   {
@@ -24,6 +24,7 @@ export const NODES: Node[] = [
       teamBPlaceholder: '2D',
       winner: '',
       target: { id: 'Cuartos_1', team: 'teamB' },
+      dataFlow: 'source',
     },
   },
   {
@@ -36,6 +37,7 @@ export const NODES: Node[] = [
       teamBPlaceholder: 'Cuartos 2',
       winner: '',
       target: { id: 'Semi_1', team: 'teamA' },
+      dataFlow: 'source',
     },
   },
   {
@@ -49,6 +51,7 @@ export const NODES: Node[] = [
       teamBPlaceholder: '2F',
       winner: '',
       target: { id: 'Cuartos_2', team: 'teamA' },
+      dataFlow: 'source',
     },
   },
   {
@@ -75,6 +78,7 @@ export const NODES: Node[] = [
       winner: '',
 
       target: { id: 'Cuartos_2', team: 'teamB' },
+      dataFlow: 'source',
     },
   },
   {
@@ -87,6 +91,7 @@ export const NODES: Node[] = [
       teamBPlaceholder: 'Cuartos 4',
       winner: '',
       target: { id: 'Semi_1', team: 'teamB' },
+      dataFlow: 'source',
     },
   },
   {
@@ -99,6 +104,7 @@ export const NODES: Node[] = [
       teamBPlaceholder: 'Semifinal 2',
       winner: '',
       target: { id: 'Final', team: 'teamA' },
+      dataFlow: 'source',
     },
   },
   {

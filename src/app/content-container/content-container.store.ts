@@ -100,6 +100,20 @@ export class ContentContainerStore extends ComponentStore<BracketsState> {
     };
   });
 
+  readonly updateLink = this.updater((state, link: Edge) => {
+    const links: Edge[] = state.links.map((l) => {
+      if (l.id === link.id) {
+        return link;
+      }
+      return l;
+    });
+
+    return {
+      ...state,
+      links: links,
+    };
+  });
+
   readonly updateGroupNodeEffect = this.effect(
     (data$: Observable<{ groupPosition: string; teamId: string }>) =>
       data$.pipe(
@@ -140,15 +154,36 @@ export class ContentContainerStore extends ComponentStore<BracketsState> {
   readonly updateUpstreamNodesOnGroupChange = this.effect(
     (groupPosition$: Observable<string>) =>
       groupPosition$.pipe(
-        withLatestFrom(this.nodes$),
-        tap(([groupPosition, nodes]) => {
+        withLatestFrom(this.nodes$, this.links$),
+        tap(([groupPosition, nodes, links]) => {
           const node = nodes.find((n) => n.id.includes(groupPosition)) as Node;
-          this.updateUpstreamNodes(node, nodes);
+          this.updateUpstreamNodes(node, nodes, links);
         })
       )
   );
 
-  private updateUpstreamNodes(node: Node, nodes: Node[]) {
+  readonly updateLinksOnGroupChange = this.effect((node: Observable<Node>) =>
+    node.pipe(
+      withLatestFrom(this.links$),
+      tap(([node, links]) => {
+        const id = node.id;
+        const dataSource = node.data.dataFlow;
+
+        if (dataSource === 'source') {
+          const link = links.find((l) => l.source === id) as Edge;
+          link.data.color = '#74EDD4';
+          this.updateLink(link);
+        } else {
+          const link = links.find((l) => l.target === id) as Edge;
+          link.data.color = '#74EDD4';
+          this.updateLink(link);
+        }
+      })
+    )
+  );
+
+  private updateUpstreamNodes(node: Node, nodes: Node[], links: Edge[]) {
+    this.clearLinkByNodeId(node, links);
     const target = node.data.target.team;
     const upstreamNode = nodes.find(
       (n) => n.id === node.data.target.id
@@ -157,7 +192,23 @@ export class ContentContainerStore extends ComponentStore<BracketsState> {
       upstreamNode.data[target] = '';
       upstreamNode.data.winner = null;
       this.updateNode(upstreamNode);
-      this.updateUpstreamNodes(upstreamNode, nodes);
+      this.updateUpstreamNodes(upstreamNode, nodes, links);
+      this.clearLinkByNodeId(upstreamNode, links);
+    }
+  }
+
+  private clearLinkByNodeId(node: Node, links: Edge[]) {
+    const id = node.id;
+    const dataSource = node.data.dataFlow;
+
+    if (dataSource === 'source') {
+      const link = links.find((l) => l.source === id) as Edge;
+      link.data.color = '';
+      this.updateLink(link);
+    } else {
+      const link = links.find((l) => l.target === id) as Edge;
+      link.data.color = '';
+      this.updateLink(link);
     }
   }
 }

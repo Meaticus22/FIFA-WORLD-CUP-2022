@@ -11,6 +11,7 @@
     [draggingEnabled]="false"
     [autoCenter]="true"
   >
+    <!-- Node Template -->
     <ng-template #nodeTemplate let-node>
       <svg:g class="node">
         <svg:foreignObject width="150" height="100">
@@ -32,6 +33,17 @@
             </mat-radio-group>
           </div>
         </svg:foreignObject>
+      </svg:g>
+    </ng-template>
+
+    <!-- Link Template -->
+    <ng-template #linkTemplate let-link>
+      <svg:g class="edge">
+        <svg:path
+          class="line"
+          stroke-width="2"
+          [attr.stroke]="link.data?.color"
+        ></svg:path>
       </svg:g>
     </ng-template>
   </ngx-graph>
