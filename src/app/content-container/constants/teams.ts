@@ -21,7 +21,7 @@ export const GROUP_A: Team[] = [
   },
   {
     id: 'netherlands',
-    name: 'Netherlands',
+    name: 'Holanda',
     group: 'A',
     emojiFlag: '🇳🇱',
   },
@@ -30,7 +30,7 @@ export const GROUP_A: Team[] = [
 export const GROUP_B: Team[] = [
   {
     id: 'england',
-    name: 'England',
+    name: 'Inglaterra',
     group: 'B',
     emojiFlag: '🏴󠁧󠁢󠁥󠁮󠁧󠁿',
   },
@@ -42,13 +42,13 @@ export const GROUP_B: Team[] = [
   },
   {
     id: 'usa',
-    name: 'USA',
+    name: 'EEUU',
     group: 'B',
     emojiFlag: '🇺🇸',
   },
   {
     id: 'wales',
-    name: 'Wales',
+    name: 'Gales',
     group: 'B',
     emojiFlag: '🏴󠁧󠁢󠁷󠁬󠁳󠁿',
   },
@@ -63,7 +63,7 @@ export const GROUP_C: Team[] = [
   },
   {
     id: 'saudi-arabia',
-    name: 'Saudi Arabia',
+    name: 'Arabia S.',
     group: 'C',
     emojiFlag: '🇸🇦',
   },
@@ -75,7 +75,7 @@ export const GROUP_C: Team[] = [
   },
   {
     id: 'poland',
-    name: 'Poland',
+    name: 'Polonia',
     group: 'C',
     emojiFlag: '🇵🇱',
   },
@@ -85,7 +85,7 @@ export const GROUP_D: Team[] = [
   // teams are france, australia, denmark,tunisia
   {
     id: 'france',
-    name: 'France',
+    name: 'Francia',
     group: 'D',
     emojiFlag: '🇫🇷',
   },
@@ -97,13 +97,13 @@ export const GROUP_D: Team[] = [
   },
   {
     id: 'denmark',
-    name: 'Denmark',
+    name: 'Dinamarca',
     group: 'D',
     emojiFlag: '🇩🇰',
   },
   {
     id: 'tunisia',
-    name: 'Tunisia',
+    name: 'Tunez',
     group: 'D',
     emojiFlag: '🇹🇳',
   },
@@ -112,7 +112,7 @@ export const GROUP_D: Team[] = [
 export const GROUP_E: Team[] = [
   {
     id: 'spain',
-    name: 'Spain',
+    name: 'España',
     group: 'E',
     emojiFlag: '🇪🇸',
   },
@@ -124,13 +124,13 @@ export const GROUP_E: Team[] = [
   },
   {
     id: 'germany',
-    name: 'Germany',
+    name: 'Alemania',
     group: 'E',
     emojiFlag: '🇩🇪',
   },
   {
     id: 'japan',
-    name: 'Japan',
+    name: 'Japon',
     group: 'E',
     emojiFlag: '🇯🇵',
   },
@@ -140,7 +140,7 @@ export const GROUP_F: Team[] = [
   // teams are belgium, canada, morocco and croatia
   {
     id: 'belgium',
-    name: 'Belgium',
+    name: 'Belgica',
     group: 'F',
     emojiFlag: '🇧🇪',
   },
@@ -152,13 +152,13 @@ export const GROUP_F: Team[] = [
   },
   {
     id: 'morocco',
-    name: 'Morocco',
+    name: 'Marruecos',
     group: 'F',
     emojiFlag: '🇲🇦',
   },
   {
     id: 'croatia',
-    name: 'Croatia',
+    name: 'Croacia',
     group: 'F',
     emojiFlag: '🇭🇷',
   },
@@ -180,13 +180,13 @@ export const GROUP_G: Team[] = [
   },
   {
     id: 'switzerland',
-    name: 'Switzerland',
+    name: 'Suiza',
     group: 'G',
     emojiFlag: '🇨🇭',
   },
   {
     id: 'cameroon',
-    name: 'Cameroon',
+    name: 'Camerun',
     group: 'G',
     emojiFlag: '🇨🇲',
   },
@@ -213,7 +213,7 @@ export const GROUP_H: Team[] = [
   },
   {
     id: 'south-korea',
-    name: 'South Korea',
+    name: 'Corea del Sur',
     group: 'H',
     emojiFlag: '🇰🇷',
   },

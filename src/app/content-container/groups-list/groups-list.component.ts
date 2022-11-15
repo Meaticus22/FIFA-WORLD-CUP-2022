@@ -8,11 +8,6 @@ import { ContentContainerStore, Group, Team } from '../content-container.store';
 export class GroupsListComponent implements OnInit {
   @Input() groups: Group[] = [];
 
-  qualified: any[] = [];
-  firstPlace = '';
-  secondPlace = '';
-  groupNames = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
-
   constructor(private store: ContentContainerStore) {}
 
   ngOnInit(): void {}

@@ -1,9 +1,9 @@
 <section class="form-container">
-  <h3>Who will be the first and second place of each group?</h3>
+  <h3>Selecciona el primer y segundo lugar del grupo</h3>
   <ng-container *ngFor="let group of groups; index as i">
     <div class="select-container">
       <div class="group-description">
-        <p>Group {{ group.id }}</p>
+        <p>Grupo {{ group.id }}</p>
         <div class="chips-container">
           <mat-chip-list *ngFor="let team of group.teams" aria-label="Teams">
             <mat-chip>
@@ -16,7 +16,7 @@
 
       <div class="select-fields-container">
         <mat-form-field appearance="fill">
-          <mat-label>1st Place</mat-label>
+          <mat-label>1er Lugar</mat-label>
           <mat-select
             #firstPlace
             [(ngModel)]="group.firstPlace"
@@ -33,7 +33,7 @@
           </mat-select>
         </mat-form-field>
         <mat-form-field appearance="fill">
-          <mat-label>2nd Place</mat-label>
+          <mat-label>2ndo Lugar</mat-label>
           <mat-select
             #secondPlace
             [(ngModel)]="group.secondPlace"
