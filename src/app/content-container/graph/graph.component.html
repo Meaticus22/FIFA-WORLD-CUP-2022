@@ -1,9 +1,9 @@
 <div class="graph-container">
-  <button (click)="centerGraph()">center</button>
-  <button (click)="fitGraph()">fit</button>
+  <button mat-raised-button (click)="centerGraph()">Centrar</button>
+  <button mat-raised-button (click)="fitGraph()">Ajustar</button>
   <ngx-graph
     class="chart-container"
-    [showMiniMap]="true"
+    [showMiniMap]="false"
     [links]="links"
     [nodes]="nodes"
     [center$]="center$"
