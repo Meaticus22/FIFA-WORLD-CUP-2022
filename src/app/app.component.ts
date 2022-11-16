@@ -19,6 +19,10 @@ export class AppComponent implements OnInit {
           content: 'Copa del Mundo Qatar 2022',
         },
         {
+          property: 'og:type',
+          content: 'website',
+        },
+        {
           property: 'og:description',
           content: 'Pronostica quien ganará el mundial de futbol',
         },
@@ -35,7 +39,11 @@ export class AppComponent implements OnInit {
           name: 'twitter:description',
           content: 'Pronostica quien ganará el mundial de futbol',
         },
-        { name: 'twitter:creator', content: 'nelsongutidev' },
+        { name: 'twitter:creator', content: '@nelsongutidev' },
+        {
+          name: 'twitter:site',
+          content: '@nelsongutidev',
+        },
         {
           name: 'twitter:image',
           content: 'https://copa-del-mundo.netlify.app/assets/preview.png',
